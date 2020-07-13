@@ -1,5 +1,5 @@
 on:
-  [pull_request]
+  [push]
 
 name: Jira Check
 
@@ -13,6 +13,8 @@ jobs:
       - name: Set output
         id: vars
         run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+      - name: Check output
+        run: echo ${{ steps.vars.outputs.short_ref }}
       - name: Login
         uses: atlassian/gajira-login@master
         env:
