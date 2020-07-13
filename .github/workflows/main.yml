@@ -10,7 +10,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
       - name: Login
         uses: atlassian/gajira-login@master
         env:
@@ -22,8 +24,7 @@ jobs:
         id: find
         uses: atlassian/gajira-find-issue-key@v2.0.1
         with:
-          from: branch
-          string:  ${{event.ref}}
+          string:  echo ${{ steps.vars.outputs.short_ref }}
 
       - name: Find issue info
         run: echo "Issue ${{ steps.find.outputs.issue }} was found"
