@@ -17,15 +17,17 @@ jobs:
         run: echo ${{ steps.vars.outputs.short_ref }}
       - name: Get Branch Name
         id: vars
-        run: echo ::set-output name=branch_name::${{ github.context.payload.pull_request.title }}  
+        run: echo $ID
+        env:
+          ID: $(jq --raw-output .pull_request.title "$GITHUB_EVENT_PATH")   
       - name : Testing pull request name
-        run: echo ${{ github.context.payload.pull_request.title }}
+        run: echo ${{ github.env.payload.pull_request.title }}
       
       - name : Testing pull request name1
-        run: echo ${{ github.context.payload.pull_request }}
+        run: echo ${{ github.env.payload.pull_request }}
         
       - name : Testing pull request name3
-        run: echo ${{ github.context.payload }}
+        run: echo ${{ github.env.payload }}
         
       - name: Login
         uses: atlassian/gajira-login@master
