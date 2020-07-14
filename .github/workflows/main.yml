@@ -20,4 +20,4 @@ jobs:
         id: find
         uses: sunil-bansiwal/find-jira-issue@master
         with:
-          from:  commit
+          from:  pullRequest
