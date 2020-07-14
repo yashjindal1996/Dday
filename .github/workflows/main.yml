@@ -20,5 +20,5 @@ jobs:
         id: find
         uses: atlassian/gajira-find-issue-key@v2.0.1
         with:
-          event: "github.event.pull_request.title"
+          string: ${{github.event.pull_request.title}}
           from:  "invalid"
