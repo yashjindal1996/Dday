@@ -8,6 +8,8 @@ jobs:
     name: Find Issue Key
     runs-on: ubuntu-latest
     steps:
+      - name: logger
+        uses: hmarr/debug-action
       - name: Checkout
         uses: actions/checkout@master
       - name: Set output
@@ -24,7 +26,7 @@ jobs:
         run: echo ${{ github.env.payload.pull_request.title }}
       
       - name : Testing pull request name1
-        run: echo ${{ github.env.payload.pull_request }}
+        run: echo ${{ fromJson(${}) }}
         
       - name : Testing pull request name3
         run: echo ${{ github.env.payload }}
