@@ -20,5 +20,4 @@ jobs:
         id: find
         uses: sunil-bansiwal/find-jira-issue@master
         with:
-          string: ${{github.event.pull_request.title}}
-          from:  "invalid"
+          from:  branch
