@@ -17,7 +17,16 @@ jobs:
         run: echo ${{ steps.vars.outputs.short_ref }}
       - name: Get Branch Name
         id: vars
-        run: echo ::set-output name=branch_name::${{ github.context.payload.pull_request.title	 }}  
+        run: echo ::set-output name=branch_name::${{ github.context.payload.pull_request.title }}  
+      - name : Testing pull request name
+        run: echo ${{ github.context.payload.pull_request.title }}
+      
+      - name : Testing pull request name1
+        run: echo ${{ github.context.payload.pull_request }}
+        
+      - name : Testing pull request name3
+        run: echo ${{ github.context.payload }}
+        
       - name: Login
         uses: atlassian/gajira-login@master
         env:
