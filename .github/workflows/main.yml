@@ -28,7 +28,16 @@ jobs:
         uses: atlassian/gajira-find-issue-key@v2.0.1
         with:
           from:  branch
+      - name: Get Issue Key
+        id: find1
+        uses: atlassian/gajira-find-issue-key@v2.0.1
+        with:
           string: ${{github.event.pull_request.title}}
+      - name: Get Issue Key
+        id: find2
+        uses: atlassian/gajira-find-issue-key@v2.0.1
+        with:
+          event: '${{github.event.pull_request.title}}'
 
       - name: Find issue info
         run: echo "Issue ${{ steps.find.outputs.issue }} was found"
