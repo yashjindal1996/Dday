@@ -17,7 +17,7 @@ jobs:
         run: echo ${{ steps.vars.outputs.short_ref }}
       - name: Get Branch Name
         id: vars
-        run: echo $ID
+        run: echo "$ID"
         env:
           ID: $(jq --raw-output .pull_request.title "$GITHUB_EVENT_PATH")   
       - name : Testing pull request name
@@ -41,7 +41,7 @@ jobs:
         uses: atlassian/gajira-find-issue-key@v2.0.1
         with:
           from:  branch
-          string: echo ${{ steps.vars.outputs.short_ref }}
+          string: "echo ${{ steps.vars.outputs.short_ref }}"
 
       - name: Find issue info
         run: echo "Issue ${{ steps.find.outputs.issue }} was found"
