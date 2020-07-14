@@ -8,26 +8,13 @@ jobs:
     name: Find Issue Key
     runs-on: ubuntu-latest
     steps:
-      - name: Debug Action
-        uses: hmarr/debug-action@v1.0.0
       - name: Checkout
         uses: actions/checkout@master
-      - name: Set output
-        id: vars2
-        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
-      - name: Check output
-        run: echo ${{ steps.vars.outputs.short_ref }}
-      - name: Get Branch Name
+      - name: Get PR Name
         id: vars
         run: echo "$ID"
         env:
           ID: ${{github.event.pull_request.title}}
-      - name : Testing pull request name
-        run: echo ${{ github.env.payload.pull_request.title }}
-        
-      - name : Testing pull request name3
-        run: echo ${{ github.env.payload }}
-        
       - name: Login
         uses: atlassian/gajira-login@master
         env:
@@ -40,7 +27,7 @@ jobs:
         uses: atlassian/gajira-find-issue-key@v2.0.1
         with:
           from:  branch
-          string: "echo ${{ steps.vars.outputs.short_ref }}"
+          string: "echo ${{ steps.vars.ID}}"
 
       - name: Find issue info
         run: echo "Issue ${{ steps.find.outputs.issue }} was found"
