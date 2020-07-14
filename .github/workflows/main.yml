@@ -21,7 +21,7 @@ jobs:
         id: vars
         run: echo "$ID"
         env:
-          ID: $(jq --raw-output .pull_request.title "$GITHUB_EVENT_PATH")   
+          ID: ${{github.event.pull_request.title}}
       - name : Testing pull request name
         run: echo ${{ github.env.payload.pull_request.title }}
         
