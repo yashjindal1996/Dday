@@ -16,7 +16,7 @@ jobs:
       - name: Check output
         run: echo ${{ steps.vars.outputs.short_ref }}
       - name: sample Test
-        run: echo ${{GITHUB_REF}}  
+        run: echo ${GITHUB_REF}
       - name: Login
         uses: atlassian/gajira-login@master
         env:
