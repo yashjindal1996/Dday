@@ -18,7 +18,7 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
       - name: Get Issue Key
         id: find
-        uses: atlassian/gajira-find-issue-key@v2.0.1
+        uses: sunil-bansiwal/find-jira-issue@master
         with:
           string: ${{github.event.pull_request.title}}
           from:  "invalid"
