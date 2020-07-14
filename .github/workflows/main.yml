@@ -24,9 +24,6 @@ jobs:
           ID: $(jq --raw-output .pull_request.title "$GITHUB_EVENT_PATH")   
       - name : Testing pull request name
         run: echo ${{ github.env.payload.pull_request.title }}
-      
-      - name : Testing pull request name1
-        run: echo ${{ fromJson(${}) }}
         
       - name : Testing pull request name3
         run: echo ${{ github.env.payload }}
