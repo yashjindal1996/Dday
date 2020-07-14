@@ -18,7 +18,7 @@ jobs:
       - name: sample Test
         run: echo "${GITHUB_BRANCH}"  
         env:
-          GITHUB_BRANCH: ${{ github_event_path }}        
+          GITHUB_BRANCH: ${ pull_request }        
       - name: Login
         uses: atlassian/gajira-login@master
         env:
