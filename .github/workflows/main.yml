@@ -16,7 +16,10 @@ jobs:
       - name: Check output
         run: echo ${{ steps.vars.outputs.short_ref }}
       - name: sample Test
-        run: echo "${GITHUB_EVENT_PATH}"      
+        run: echo "${BASE_REF} ${HEAD_REF}"      
+        env:
+          BASE_REF:  ${{ github.base_ref	 }}
+          HEAD_REF:  ${{ github.head_ref	 }}  
       - name: Login
         uses: atlassian/gajira-login@master
         env:
