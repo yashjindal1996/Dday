@@ -11,15 +11,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Set output
-        id: vars
+        id: vars2
         run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
       - name: Check output
         run: echo ${{ steps.vars.outputs.short_ref }}
-      - name: sample Test
-        run: echo "${BASE_REF} ${HEAD_REF}"      
+      - name: Get Branch Name
+        id: vars
+        run: echo ::set-output name=branch_name::${HEAD_REF}
         env:
-          BASE_REF:  ${{ github.base_ref	 }}
-          HEAD_REF:  ${{ github.head_ref	 }}  
+          HEAD_REF:  ${{ github.event	 }}  
       - name: Login
         uses: atlassian/gajira-login@master
         env:
@@ -32,7 +32,7 @@ jobs:
         uses: atlassian/gajira-find-issue-key@v2.0.1
         with:
           from:  branch
-          string: "SWTCH-63"  
+          string: echo ${{ steps.vars.outputs.short_ref }}
 
       - name: Find issue info
         run: echo "Issue ${{ steps.find.outputs.issue }} was found"
