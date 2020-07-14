@@ -17,9 +17,7 @@ jobs:
         run: echo ${{ steps.vars.outputs.short_ref }}
       - name: Get Branch Name
         id: vars
-        run: echo ::set-output name=branch_name::${HEAD_REF}
-        env:
-          HEAD_REF:  ${{ github.event	 }}  
+        run: echo ::set-output name=branch_name::${{ github.event	 }}  
       - name: Login
         uses: atlassian/gajira-login@master
         env:
