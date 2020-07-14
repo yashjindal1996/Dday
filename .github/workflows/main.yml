@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@master
       - name: Get PR Name
         id: vars
-        run: echo "$PR_NAME"
+        run: echo '::set-env name=PULL_NAME::${PR_NAME}'
         env:
           PR_NAME: ${{github.event.pull_request.title}}
       - name: Login
@@ -28,7 +28,7 @@ jobs:
         uses: atlassian/gajira-find-issue-key@v2.0.1
         with:
           from:  branch
-          string: "${PR_NAME}"
+          string: echo ${PULL_NAME}
 
       - name: Find issue info
         run: echo "Issue ${{ steps.find.outputs.issue }} was found"
