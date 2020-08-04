@@ -20,6 +20,4 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
       - name: Get Issue Key
         id: find
-        uses: sunil-bansiwal/find-jira-issue@master
-        with:
-          from:  pullRequest
+        run: echo "Issue ${{ github.sha }} was found"
