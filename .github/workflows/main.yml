@@ -18,4 +18,4 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
       - name: Get Issue Key
         id: find
-        run: echo "Issue ${{ github.head_ref }} was found"
+        run: echo "Issue ${{ github.head_sha }} was found"
