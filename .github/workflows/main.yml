@@ -8,8 +8,6 @@ jobs:
     name: Find Issue Key
     runs-on: ubuntu-latest
     steps:
-      - name: Debug Action
-        uses: hmarr/debug-action@v1.0.0
       - name: Checkout
         uses: actions/checkout@master
       - name: Login
@@ -20,4 +18,4 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
       - name: Get Issue Key
         id: find
-        run: echo "Issue ${{ github.sha }} was found"
+        run: echo "Issue ${{ github.head_ref }} was found"
