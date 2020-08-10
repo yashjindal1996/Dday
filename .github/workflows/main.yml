@@ -5,7 +5,7 @@ name: Jira Check
 
 jobs:
   test-find-issue-key:
-    name: Find Issue Ke
+    name: Find Issue Key
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
