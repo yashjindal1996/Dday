@@ -1,5 +1,5 @@
 on:
-  [pull_request]
+  push
 
 name: Jira Check
 
@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Login
-        uses: atlassian/gajira-login@master
+        uses: yashjindal1996/gajira-login@master
         env:
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
@@ -20,4 +20,4 @@ jobs:
         id: find
         uses: sunil-bansiwal/find-jira-issue@master
         with:
-          from:  pullRequest
+          from: commits
