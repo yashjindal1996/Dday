@@ -1,5 +1,6 @@
 on:
-  [pull_request]
+  pull_request:
+    types: [ opened, reopened, edited, synchronize]
 
 name: Jira Check
 
